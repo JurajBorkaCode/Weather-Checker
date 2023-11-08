@@ -2,7 +2,6 @@ import requests
 import geocoder
 import sys
 import datetime
-import copy
 
 args = sys.argv
 
@@ -38,7 +37,7 @@ def location(loc:str):
         data = response.json()
         return data[0]["lat"], data[0]["lon"]
     else:
-        print("Error")
+        print("API key Error")
 
 
 
@@ -48,7 +47,7 @@ def get_data(lat:str,lon:str):
         data = response.json()
         return data
     else:
-        print("Error")
+        print("API key Error")
 
 def get_forecast(lat:str,lon:str):
     response = requests.get(f'https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={api_key}')
@@ -56,7 +55,7 @@ def get_forecast(lat:str,lon:str):
         data = response.json()
         return data
     else:
-        print("Error")
+        print("API key Error")
 
 
 g = geocoder.ip('me')
